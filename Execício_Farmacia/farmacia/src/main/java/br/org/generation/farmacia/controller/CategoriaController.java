@@ -18,17 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.org.generation.farmacia.model.categoria;
-import br.org.generation.farmacia.model.produto;
-import br.org.generation.farmacia.repository.categoriaRepository;
+import br.org.generation.farmacia.repository.CategoriaRepository;
+
 
 
 @RestController
 @RequestMapping("/categorias")
 @CrossOrigin(origins="*", allowedHeaders="*")
-public class CategoriaController<CategoriaRepository> {
+public class CategoriaController {
 	
 	@Autowired
-	private categoriaRepository categoriaRepository;
+	private CategoriaRepository categoriaRepository;
 	
 	@GetMapping
 	public ResponseEntity<List<categoria>> getAll(){
@@ -43,8 +43,8 @@ public class CategoriaController<CategoriaRepository> {
 	}
 	
 	@GetMapping("/setor/{setor}")
-	public ResponseEntity<List<produto>> getByCategoria(@PathVariable String setor){
-		return ResponseEntity.ok(categoriaRepository.findAllByNomeContainingIgnoreCase(setor));
+	public ResponseEntity<List<categoria>> getByCategoria(@PathVariable String setor){
+		return ResponseEntity.ok(categoriaRepository.findAllBySetorContainingIgnoreCase(setor));
 	}
 	
 	@PostMapping

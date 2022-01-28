@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.org.generation.farmacia.model.produto;
-import br.org.generation.farmacia.repository.categoriaRepository;
-import br.org.generation.farmacia.repository.produtoRepository.ProdutoRepository;
+import br.org.generation.farmacia.repository.CategoriaRepository;
+import br.org.generation.farmacia.repository.ProdutoRepository;
+
+
 
 @RestController
 @RequestMapping("/produtos")
@@ -31,7 +33,7 @@ public class produtoController {
 	private ProdutoRepository produtoRepository;
 	
 	@Autowired
-	private categoriaRepository categoriaRepository;
+	private CategoriaRepository categoriaRepository;
 	
 	@GetMapping
 	public ResponseEntity<List<produto>> getAll(){
@@ -61,7 +63,7 @@ public class produtoController {
 	public ResponseEntity<produto> putProduto(@Valid @RequestBody produto produto){
 		if(produtoRepository.existsById(produto.getId())) {
 			return categoriaRepository.findById(produto.getCategoria().getId())
-					.map(resposta-> ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto)))
+					.map(resposta-> ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produto)))
 					.orElse(ResponseEntity.badRequest().build());
 		}
 		return ResponseEntity.notFound().build();

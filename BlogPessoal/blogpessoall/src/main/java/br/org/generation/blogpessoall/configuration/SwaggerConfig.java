@@ -19,19 +19,19 @@ public class SwaggerConfig {
 	public OpenAPI springBlogPessoalOpenAPI() {
 		return new OpenAPI()
 				.info(new Info()
-					.title("Projeto Blog Pessoal")
+					.title("Projeto Viver Obriga História")
 					.description("Projeto Blog Pessoal - Generation Brasil")
 					.version("v0.0.1")
 				.license(new License()
 					.name("generation.org.br")
 					.url("http://springdoc.org"))
 				.contact(new Contact()
-					.name("Sabrina Moura")
-					.url("https://github.com/Brinamg")
-					.email("brina.gandra@gmail.com")))
+					.name("Cleyfson Angelo")
+					.url("https://github.com/Cleyf")
+					.email("cleyfson12@outlook.com")))
 				.externalDocs(new ExternalDocumentation()
 					.description("Github")
-					.url("https://github.com/Brinamg"));
+					.url("https://github.com/Cleyf"));
 	}
 
 	@Bean

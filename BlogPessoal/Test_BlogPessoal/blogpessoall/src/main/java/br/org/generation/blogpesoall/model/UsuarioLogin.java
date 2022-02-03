@@ -61,9 +61,5 @@ public class UsuarioLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
 
-
-	
-
-	}
+}

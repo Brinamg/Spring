@@ -1,5 +1,6 @@
 package br.org.generation.blogpesoall.security;
 
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 		
 		Optional<Usuario> usuario = userRepository.findByUsuario(userName);
+			  
+		usuario.orElseThrow(() -> new UsernameNotFoundException(userName + " not found."));
 
 		return usuario.map(UserDetailsImpl::new).get();
 	}

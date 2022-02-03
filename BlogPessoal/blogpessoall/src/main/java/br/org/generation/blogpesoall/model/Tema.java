@@ -29,7 +29,7 @@ public class Tema {
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
-	
+		
 	public Long getId() {
 		return id;
 	}

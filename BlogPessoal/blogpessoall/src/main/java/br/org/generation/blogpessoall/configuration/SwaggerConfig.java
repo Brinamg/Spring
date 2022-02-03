@@ -1,4 +1,4 @@
-package br.org.generation.blogpesoall.configuration;
+package br.org.generation.blogpessoall.configuration;
 
 import org.springdoc.core.customizers.OpenApiCustomiser;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,7 @@ public class SwaggerConfig {
 					.description("Projeto Blog Pessoal - Generation Brasil")
 					.version("v0.0.1")
 				.license(new License()
-					.name("br.org.generation")
+					.name("generation.org.br")
 					.url("http://springdoc.org"))
 				.contact(new Contact()
 					.name("Sabrina Moura")

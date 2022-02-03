@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,19 +23,21 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class Usuario {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@NotBlank(message = "O atributo Nome é Obrigatório!")
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@NotBlank (message = "O atributo nome é Obrigatório!")
+	@Size (min = 2, max = 100)
 	private String nome;
-
+	
 	@Schema(example = "email@email.com.br")
-	@NotBlank(message = "O atributo Usuário é Obrigatório!")
+	@NotNull(message = "O atributo Usuário é Obrigatório!")
 	@Email(message = "O atributo Usuário deve ser um email válido!")
 	private String usuario;
 
-	@NotBlank(message = "O atributo Senha é Obrigatório!")
-	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
+	
+	@NotBlank (message = "O atributo senha é Obrigatório!")
+	@Size (min = 2, max = 100)
 	private String senha;
 	
 	private String foto;
@@ -52,11 +55,11 @@ public class Usuario {
 	
 	public Usuario() { }
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -100,7 +103,6 @@ public class Usuario {
 		this.postagem = postagem;
 	}
 
-	
 
 
 }

@@ -1,4 +1,4 @@
-package br.generation.blogpessoall.repository;
+package br.org.generation.blogpesoall.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,7 +16,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 import br.org.generation.blogpesoall.model.Usuario;
-import br.org.generation.blogpesoall.repository.UsuarioRepository;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -39,7 +38,7 @@ public class UsuarioRepositoryTest {
 	@DisplayName("Retorna 1 usuario")
 	public void deveRetornarUmUsuario() {
 
-		Optional<Usuario> usuario = usuarioRepository.findByUsuario("mari@email.com.br");
+		Optional<Usuario> usuario = usuarioRepository.findByUsuario("maria@email.com.br");
 		assertTrue(usuario.get().getUsuario().equals("maria@email.com.br"));
 	}
 

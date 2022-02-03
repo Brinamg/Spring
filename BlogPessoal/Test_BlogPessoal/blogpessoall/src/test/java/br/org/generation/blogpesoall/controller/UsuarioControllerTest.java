@@ -1,4 +1,4 @@
-package br.generation.blogpessoall.controller;
+package br.org.generation.blogpesoall.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,19 +20,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import br.org.generation.blogpesoall.model.Usuario;
+import br.org.generation.blogpesoall.repository.UsuarioRepository;
 import br.org.generation.blogpesoall.service.UsuarioService;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UsuarioControllerTest {
-
+		
 	@Autowired
 	private TestRestTemplate testRestTemplate;
-
+	
 	@Autowired
 	private UsuarioService usuarioService;
-
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	
 	@Test
 	@Order(1)
 	@DisplayName("Cadastrar Um Usuário")
@@ -64,7 +68,7 @@ public class UsuarioControllerTest {
 
 		assertEquals(HttpStatus.BAD_REQUEST, resposta.getStatusCode());
 	}
-
+	
 	@Test
 	@Order(3)
 	@DisplayName("Alterar um Usuário")
@@ -74,7 +78,7 @@ public class UsuarioControllerTest {
 				"Arthur Alves", "arthur@email.com.br", "25798456", " "));
 
 		Usuario usuarioUpdate = new Usuario(usuarioCreate.get().getId(), 
-				"Arthur Alves", "arthur@email.com.br", "25798456", " ");
+				"Arthur Alves Silva", "arthur@email.com.br", "25798456", " ");
 		
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuarioUpdate);
 
@@ -104,11 +108,22 @@ public class UsuarioControllerTest {
 
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
 	}
+	
+	@Test
+	@Order(5)
+	@DisplayName("Procurar usuário por ID")
+	public void procurarUsuariosPorId() {
+		
+		Usuario usuario = usuarioRepository.save(new Usuario(0L, 
+				"Maria Alves", "maria@email.com.br", "15798456", ""));
+	
+		ResponseEntity<String> resposta = testRestTemplate
+			.withBasicAuth("root", "root")
+			.exchange("/usuarios/"+usuario.getId(), HttpMethod.GET, null, String.class);
+
+		assertEquals(HttpStatus.OK, resposta.getStatusCode());
+	}
+
+	
 
 }
-
-
-
-
-
-

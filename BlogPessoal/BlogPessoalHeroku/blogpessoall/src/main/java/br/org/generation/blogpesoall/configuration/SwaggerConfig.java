@@ -1,5 +1,4 @@
-package br.org.generation.blogpessoall.configuration;
-
+package br.org.generation.blogpesoall.configuration;
 import org.springdoc.core.customizers.OpenApiCustomiser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,19 +18,19 @@ public class SwaggerConfig {
 	public OpenAPI springBlogPessoalOpenAPI() {
 		return new OpenAPI()
 				.info(new Info()
-					.title("Projeto Viver Obriga História")
+					.title("Projeto ")
 					.description("Projeto Blog Pessoal - Generation Brasil")
 					.version("v0.0.1")
 				.license(new License()
 					.name("generation.org.br")
-					.url("http://springdoc.org"))
+					.url("https://springdoc.org"))
 				.contact(new Contact()
-					.name("Cleyfson Angelo")
-					.url("https://github.com/Cleyf")
-					.email("cleyfson12@outlook.com")))
+					.name("Sabrina Moura")
+					.url("https://github.com/Brinamg")
+					.email("brina.gandra@gmail.com")))
 				.externalDocs(new ExternalDocumentation()
 					.description("Github")
-					.url("https://github.com/Cleyf"));
+					.url("https://github.com/Brinamg"));
 	}
 
 	@Bean
@@ -61,3 +60,4 @@ public class SwaggerConfig {
 	}
 
 }
+
